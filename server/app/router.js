@@ -11,6 +11,10 @@ router.get("/current-listings", async(req, res) => {
     const listings = await controller.index(req.query);
     res.send(listings);
 });
-// TODO: Add routes here (maybe 🤔 start with a GET test route)
+
+router.post("/reviews/:id", async (req, res) => {
+    const newReview = controller.createReview(req.params.id, req.body); 
+    res.json(newReview);
+  });
 
 export default router;
